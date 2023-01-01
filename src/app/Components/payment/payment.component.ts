@@ -109,6 +109,7 @@ export class PaymentComponent implements OnInit {
                             localStorage.removeItem('cart_items');
                             localStorage.removeItem('cartCount');
                             this.store.dispatch(reset());
+                            setTimeout(() => {},2000)
                              this.router.navigate(['/order']);
 
                           });
