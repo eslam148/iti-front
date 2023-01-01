@@ -1,0 +1,41 @@
+<div class="row">
+  <!-- card -->
+  <div class="col-xl-3 col-md-4 mt-2" *ngFor="let product of filterdProducts">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <div class="card-img-actions">
+          <img
+            [src] = "'http://eslam1998-001-site1.gtempurl.com/wwwroot/Images/'+product.images2[0]"
+            class="card-img img-fluid"
+            width="96"
+            height="350"
+            alt=""
+
+          />
+        </div>
+      </div>
+      <div class="card-body bg-light text-center">
+        <div class="mb-2">
+          <h6 class="font-weight-semibold mb-2">
+            <a *ngIf="(lang |async)=='en'"  href="#" class="mb-2">{{product.category}}</a>
+            <a *ngIf="(lang |async)=='ar'" href="#" class="mb-2">{{product.categoryAr}}</a>
+
+          </h6>
+          <a *ngIf="(lang |async)=='en'"  href="#" class="text-muted">{{product.name}}</a>
+          <a *ngIf="(lang |async)=='ar'"  href="#" class="text-muted">{{product.nameAr}}</a>
+        </div>
+        <h3 class="mb-0 font-weight-semibold">{{product.price}}</h3>
+        <p class="text-muted mb-3">
+          <a [routerLink]="['/productdetails',product.no]">{{ "product details" | translate }}</a>
+        </p>
+        <div>
+          <ngb-rating [max]="5" [rate]="+(product.totalRating / product.ratingCount).toFixed(2)" [readonly]="true" ></ngb-rating>
+        </div>
+        <button type="button" class="btn btn-warning" (click)=" addToCart(product)">
+          <i class="bi bi-cart3"></i> {{ "Add to cart" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

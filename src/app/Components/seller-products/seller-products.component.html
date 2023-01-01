@@ -1,0 +1,46 @@
+<!-- {{translate.translations|json}} -->
+<!-- {{translate|json}} -->
+
+<ng-container *ngIf="products.length > 0">
+<div class="  table-responsive p-3">
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">{{"Name"|translate}}</th>
+        <th scope="col">{{"descriptionTb"|translate}}</th>
+        <th scope="col">{{"Price"|translate}}</th>
+        <th scope="col">{{"Category"|translate}}</th>
+        <th scope="col">{{"Quantity"|translate}}</th>
+        <th scope="col">{{"Selled Quantity"|translate}} </th>
+        <th scope="col">{{"Progress"|translate}} </th>
+        <th scope="col">{{"Edit"|translate}} </th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of products;let i = index">
+        <th scope="row" >{{i+1}}</th>
+        <td *ngIf="(lang |async)=='en'">{{item.name}}</td>
+        <td *ngIf="(lang |async)=='en'">{{item.description}}</td>
+         <td *ngIf="(lang |async)=='ar'">{{item.nameAr}}</td>
+        <td *ngIf="(lang |async)=='ar'">{{item.descriptionAr}}</td>
+        <td >{{item.price}}</td>
+        <td *ngIf="(lang |async)=='en'">{{item.category}}</td>
+         <td *ngIf="(lang |async)=='ar'">{{item.categoryAr}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.selledQauntity}}</td>
+
+         <td *ngIf="item.progress == 0" ><span class="bg-danger badge p-2 fs-5">{{"Pending"|translate}}</span></td>
+        <td *ngIf="item.progress == 1" ><span class="bg-success badge p-2 fs-5">{{"published"|translate}}</span></td>
+        <td><a class="btn btn-secondary" [routerLink]="['/EditProduct',item.no]">{{"Edit"|translate}}</a> </td>
+
+      </tr>
+      <tr>
+    </tbody>
+  </table>
+</div>
+</ng-container>
+<ng-container *ngIf="products.length == 0">
+  <h1 class="m-auto">{{"There is no products added yet"|translate}}</h1>
+</ng-container>

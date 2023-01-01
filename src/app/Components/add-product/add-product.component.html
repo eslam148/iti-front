@@ -1,0 +1,117 @@
+<form class="p-3" #productForm="ngForm">
+    <div class="mb-3">
+      <label for="prdName" class="form-label">{{"Product Name"|translate}}</label>
+        <input #prdName="ngModel"  type="text" class="form-control" name="prdName" id="prdName" required [(ngModel)]="newPrd.name"
+          [class.is-valid]="prdName.valid" [class.is-invalid]="prdName.invalid&& prdName?.touched">
+      <div class="alert alert-danger" [hidden]="prdName.valid || prdName.untouched">
+          <div *ngIf="prdName.errors?.['required']">{{"Product Name Required"|translate}}</div>
+      </div>
+    </div>
+
+<div class="mb-3">
+      <label for="prdName" class="form-label">{{"Product NameAr"|translate}}</label>
+        <input #prdNameAr="ngModel"  type="text" class="form-control" name="prdName" id="prdName" required [(ngModel)]="newPrd.nameAr"
+          [class.is-valid]="prdNameAr.valid" [class.is-invalid]="prdNameAr.invalid&& prdNameAr?.touched">
+      <div class="alert alert-danger" [hidden]="prdNameAr.valid || prdNameAr.untouched">
+          <div *ngIf="prdNameAr.errors?.['required']">{{"Product Name Required"|translate}}</div>
+      </div>
+  </div>
+    <div class="mb-3">
+      <label for="prdQuant" class="form-label">{{"Quantity"|translate}}</label>
+      <input #prdQuantity="ngModel" type="number" class="form-control" name="prdQuant" id="prdQuant" required
+      [(ngModel)]="newPrd.qauntity" [class.is-valid]="prdQuantity.valid" [class.is-invalid]="prdQuantity.invalid&& prdQuantity?.touched">
+      <div class="alert alert-danger" [hidden]="prdQuantity.valid || prdQuantity.untouched">
+        <small *ngIf="prdQuantity.errors?.['required']">{{"Quantity is Required"|translate}}</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="prdPrc" class="form-label">{{"Price"|translate}}</label>
+      <input #prdprice="ngModel" type="number" class="form-control" name="prdPrc" id="prdPrc" required
+      [(ngModel)]="newPrd.price" [class.is-valid]="prdprice.valid" [class.is-invalid]="prdprice.invalid&& prdprice?.touched" >
+      <div class="alert alert-danger" [hidden]="prdprice.valid || prdprice.untouched">
+        <small *ngIf="prdprice.errors?.['required']">{{"Price is Required"|translate}}</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="prddesc" class="form-label">{{"Discription"|translate}}</label>
+          <textarea #prdDesc="ngModel" class="form-control" name="prddesc" id="prddesc"
+           required [(ngModel)]="newPrd.description"
+           [class.is-valid]="prdDesc.valid" [class.is-invalid]="prdDesc.invalid&& prdDesc?.touched"></textarea>
+           <div class="alert alert-danger" [hidden]="prdDesc.valid || prdDesc.untouched">
+            <small *ngIf="prdDesc.errors?.['required']">{{"Description is Required"|translate}}</small>
+          </div>
+      </div>
+       <div class="mb-3">
+        <label for="prddesc" class="form-label">{{"descriptionAr"|translate}}</label>
+          <textarea #prdDescAr="ngModel" class="form-control" name="prddesc" id="prddesc"
+           required [(ngModel)]="newPrd.descriptionAr"
+           [class.is-valid]="prdDescAr.valid" [class.is-invalid]="prdDescAr.invalid&& prdDescAr?.touched"></textarea>
+           <div class="alert alert-danger" [hidden]="prdDescAr.valid || prdDescAr.untouched">
+            <small *ngIf="prdDescAr.errors?.['required']">{{"Description is Required"|translate}}</small>
+          </div>
+      </div>
+ <div class="mb-3">
+          <label for="images" class="col-sm-3 col-form-label">{{"Images"|translate}}</label>
+            <div class="col-sm-9">
+                <input (change)="onFileChange($event)" id="images" type="file" class="form-control" accept="image/*" multiple/>
+            </div>
+             <button  class="btn btn-primary" (click)="uploadFile()">{{"Upload File"|translate}}</button>
+    </div>
+    <div class="mb-3">
+      <label for="prdCat" class="form-label">{{"Select Category"|translate}}</label>
+      <select #catSelect="ngModel" (change)="GetSubcat(catSelect.value)" class="form-control" name="prdCat" id="prdCat" required [(ngModel)]="newPrd.category">
+        <option selected>Open this select menu</option>
+        <ng-container *ngIf="(lang |async)=='en'" >
+            <option *ngFor="let cat of categoryList" [value]="cat.id">
+              {{cat.name}}
+            </option>
+        </ng-container>
+        <ng-container *ngIf="(lang |async)=='ar'" >
+            <option *ngFor="let cat of categoryList" [value]="cat.id">
+              {{cat.nameAr}}
+            </option>
+        </ng-container>
+      </select>
+      <div class="alert alert-danger" [hidden]="catSelect.valid || catSelect.untouched">
+
+    </div>
+    </div>
+  <div class="mb-3">
+      <label for="prdSubcat" class="form-label">{{"Select Subcategory"|translate}}</label>
+      <select #SubcatSelect="ngModel" class="form-control" name="prdSubcat" id="prdSubcat" required [(ngModel)]="newPrd.subCategory">
+        <option selected>Open this select menu</option>
+        <ng-container *ngIf="(lang |async)=='en'" >
+            <option *ngFor="let cat of subCategoryList" [value]="cat.id">
+              {{cat.brandName}}
+            </option>
+        </ng-container>
+         <ng-container *ngIf="(lang |async)=='ar'" >
+            <option *ngFor="let cat of subCategoryList" [value]="cat.id">
+              {{cat.brandNameAr}}
+            </option>
+        </ng-container>
+      </select>
+      <div class="alert alert-danger" [hidden]="SubcatSelect.valid || SubcatSelect.untouched">
+        <small *ngIf="SubcatSelect.errors?.['required']">{{"You Must Select Category"|translate}}</small>
+    </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="Discounts" class="form-label">{{"Discount"|translate}}</label>
+      <select #DiscountsSelect="ngModel" class="form-control" name="discountID" id="Discounts" required [(ngModel)]="newPrd.discountID">
+        <option selected>Open this select menu</option>
+        <option *ngFor="let Discount of Discounts" [value]="Discount.id">
+          {{Discount.name}}
+        </option>
+      </select>
+      <div class="alert alert-danger" [hidden]="DiscountsSelect.valid || DiscountsSelect.untouched">
+        <small *ngIf="DiscountsSelect.errors?.['required']">{{"You Must Select Category"|translate}}</small>
+    </div>
+    </div>
+    <button type="submit" (click)="InsertNewProduct()" class="btn btn-primary" [disabled]="productForm.invalid|| !UploadImage" >{{"Add"|translate}}</button>
+
+  </form>
+<!-- <input type="file" (change)="onFileChange($event)" /><br/>
+<button (click)="uploadFile()" [disabled]="!theFile">Upload File</button><br/><br/> -->

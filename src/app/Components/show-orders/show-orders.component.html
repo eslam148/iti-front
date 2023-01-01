@@ -1,0 +1,25 @@
+<div class="  table-responsive p-3">
+ <table class="table table-hover">    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">{{"Payment Number"|translate}}</th>
+        <th scope="col">{{"totalPriceOfType"|translate}}</th>
+        <th scope="col">{{"Progress"|translate}}</th>
+        <th scope="col">{{"view details"|translate}}</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of orderDetials;let i = index">
+        <th scope="row" >{{i+1}}</th>
+        <td>{{item.payment_id}}</td>
+        <td>{{item.total}}</td>
+        <td *ngIf="item.progress == 0"><span class="bg-danger badge p-2 fs-5">{{"pending"|translate}}</span></td>
+        <td *ngIf="item.progress == 1"><span class="bg-info badge p-2 fs-5">{{"Shipped"|translate}}</span></td>
+        <td *ngIf="item.progress == 2"><span class="bg-success badge p-2 fs-5">{{"Delivered"|translate}}</span></td>
+        <td><a class="btn btn-primary" [routerLink]="['/orderItems',item.id]">{{"Detalis"|translate}}</a></td>
+      </tr>
+      <tr>
+    </tbody>
+  </table>
+</div>

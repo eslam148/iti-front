@@ -1,0 +1,151 @@
+<div class="col-12 grid-margin ">
+              <div class="card d-flex justify-content-center">
+                <div class="card-body">
+            <h4 class="card-title">{{"Edit Product"|translate}}</h4>
+                  <form class="form-sample col-12" method="post" [formGroup]="productFormGroup" (ngSubmit)="Edit()" >
+
+                    <div class="row my-4">
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">{{"product Name"|translate}}</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" formControlName="name" [class.is-valid]="name?.valid" [class.is-invalid]="name?.invalid && name?.touched" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- ///////////// -->
+                      <div class="row my-4">
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">{{"Product NameAr"|translate}}</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" formControlName="nameAr" [class.is-valid]="nameAr?.valid" [class.is-invalid]="nameAr?.invalid && nameAr?.touched" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- ///////////////////// -->
+                     <div class="row my-4">
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">{{"Category"|translate}}</label>
+                          <div class="col-sm-9">
+                            <select asp-for="subCategory" class="form-control"(change)="GetSubcat(category!.value)" formControlName="category" [class.is-valid]="category?.valid" [class.is-invalid]="category?.invalid && category?.touched" >
+                              <!-- <option selected>Open this select menu</option>
+                              <option *ngFor="let cat of categoryList" [value]="cat.id">
+                                      {{cat.name}}
+                              </option> -->
+                                <ng-container *ngIf="(lang |async)=='en'" >
+                                  <option *ngFor="let cat of categoryList" [value]="cat.id">
+                                    {{cat.name}}
+                                  </option>
+                                </ng-container>
+                                <ng-container *ngIf="(lang |async)=='ar'" >
+                                  <option *ngFor="let cat of categoryList" [value]="cat.id">
+                                    {{cat.nameAr}}
+                                  </option>
+                               </ng-container>
+                            </select>
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="row my-4">
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">{{"Category"|translate}}</label>
+                          <div class="col-sm-9">
+                            <select asp-for="subCategory" class="form-control" formControlName="subCategory" [class.is-valid]="subCategory?.valid" [class.is-invalid]="subCategory?.invalid && subCategory?.touched" >
+                                <!-- <option selected>Open this select menu</option>
+                                <option *ngFor="let cat of subCategoryList" [value]="cat.id">
+                                  {{cat.brandName}}
+                                </option> -->
+                                <ng-container *ngIf="(lang |async)=='en'" >
+                                  <option *ngFor="let cat of subCategoryList" [value]="cat.id">
+                                    {{cat.brandName}}
+                                  </option>
+                                </ng-container>
+                                <ng-container *ngIf="(lang |async)=='ar'" >
+                                  <option *ngFor="let cat of subCategoryList" [value]="cat.id">
+                                    {{cat.brandNameAr}}
+                                  </option>
+                               </ng-container>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                      <div class="row my-4">
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label asp-for="DiscountID" class="col-sm-3 col-form-label">{{"Discount"|translate}}</label>
+                          <div class="col-sm-9">
+                            <select asp-for="DiscountID" class="form-control" formControlName="discountID" [class.is-valid]="discountID?.valid" [class.is-invalid]="discountID?.invalid && discountID?.touched">
+                              <option selected>Open this select menu</option>
+                              <option *ngFor="let Discount of Discounts" [value]="Discount.id">
+                                        {{Discount.name}}
+                              </option>
+                            </select>
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+
+                    <div class="row my-4">
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label"> {{"description"|translate}}</label>
+                          <div class="col-sm-9">
+                            <textarea  type="text" class="form-control" rows="4" formControlName="description" [class.is-valid]="description?.valid" [class.is-invalid]="description?.invalid && description?.touched"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                        <div class="row my-4">
+                          <div class="col-md-12">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label"> {{"descriptionAr"|translate}}</label>
+                              <div class="col-sm-9">
+                                <textarea type="text" class="form-control" rows="4" formControlName="descriptionAr" [class.is-valid]="descriptionAr?.valid" [class.is-invalid]="descriptionAr?.invalid && descriptionAr?.touched"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    <div class="row my-4">
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label asp-for="Price" class="col-sm-3 col-form-label">{{"Price"|translate}}</label>
+                          <div class="col-sm-9">
+                            <input  type="number" class="form-control" formControlName="price" [class.is-valid]="price?.valid" [class.is-invalid]="price?.invalid && price?.touched"/>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row my-4">
+                         <div class="col-md-12">
+                        <div class="form-group row">
+                          <label asp-for="Qauntity" class="col-sm-3 col-form-label">{{"Quantity"|translate}}</label>
+                          <div class="col-sm-9">
+                            <input asp-for="Qauntity" type="number" class="form-control" formControlName="quantity" [class.is-valid]="quantity?.valid" [class.is-invalid]="quantity?.invalid && quantity?.touched"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit"  class="btn btn-info" [disabled]="productFormGroup.invalid">{{"Edit"|translate}}</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>

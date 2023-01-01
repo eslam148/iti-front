@@ -1,0 +1,188 @@
+<!-- slider -->
+<div
+  id="carouselExampleControls"
+  class="carousel slide"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="https://m8itsolutions.com/wp-content/uploads/2020/05/banner.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://img.freepik.com/premium-photo/online-shopping-design-shopping-trolleys-with-long-receipts-advertising-poster-banner-3d-illustration_34478-1198.jpg?w=2000"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://www.abitcorp.com/images/bg-banner-service-ecommerce2.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleControls"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleControls"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- new added prooduct -->
+
+  <h1 class="text-center mt-2">{{ "New Products" | translate }}</h1>
+
+    <div class="row" >
+     <div class="col-md-4 col-12 mt-2" *ngFor="let prd of productList;let i=index;">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <div class="card-img-actions">
+          <img
+            [src] = "'http://eslam1998-001-site1.gtempurl.com/wwwroot/Images/'+prd.images2[0]"
+            class="card-img img-fluid"
+            width="96"
+            height="350"
+            alt=""
+
+          />
+        </div>
+      </div>
+      <div class="card-body bg-light text-center">
+        <div class="mb-2">
+          <h6 class="font-weight-semibold mb-2">
+            <a *ngIf="(lang |async)=='en'"  href="#" class="mb-2">{{prd.category}}</a>
+            <a *ngIf="(lang |async)=='ar'" href="#" class="mb-2">{{prd.categoryAr}}</a>
+
+          </h6>
+          <a *ngIf="(lang |async)=='en'"  href="#" class="text-muted">{{prd.name}}</a>
+          <a *ngIf="(lang |async)=='ar'"  href="#" class="text-muted">{{prd.nameAr}}</a>
+
+        </div>
+        <h3 class="mb-0 font-weight-semibold">{{prd.price}}</h3>
+         <div>
+          <ngb-rating [max]="5" [rate]="+(prd.totalRating / prd.ratingCount).toFixed(2)" [readonly]="true" ></ngb-rating>
+        </div>
+        <p class="text-muted mb-3">
+          <a [routerLink]="['/productdetails',prd.no]">{{ "product details" | translate }}</a>
+        </p>
+
+        <button type="button" class="btn btn-warning" (click)="addToCart(prd)">
+          <i class="bi bi-cart3"></i> {{ "Add to cart" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+    </div>
+
+    <!-- Best seller product -->
+    <section class="section-products">
+
+        <div class="row justify-content-center text-center">
+          <div class="col-md-8 col-lg-6">
+            <div class="header">
+              <h1>{{ "Best seller" | translate }}</h1>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 col-xl-3 shadow-sm mb-4 pl-5" *ngFor="let prd of bestSellerList;let i=index;">
+            <div id="product-1" class="single-product">
+              <div class="part-1">
+                <img
+                  class="img-fluid"
+                  [src] = "'http://eslam1998-001-site1.gtempurl.com/wwwroot/Images/'+prd.images2[0]"
+                />
+
+              </div>
+              <div class="part-2">
+                <h1>
+
+                  <a  *ngIf="(lang |async)=='en'" [routerLink]="['/productdetails',prd.no]" class="product-title">{{prd.name}}</a><br />
+                  <a  *ngIf="(lang |async)=='ar'" [routerLink]="['/productdetails',prd.no]" class="product-title">{{prd.nameAr}}</a><br />
+
+                </h1>
+                <div>
+                  <ngb-rating [max]="5" [rate]="+(prd.totalRating / prd.ratingCount).toFixed(2)" [readonly]="true" ></ngb-rating>
+                </div>
+                <a [routerLink]="['/productdetails',prd.no]"
+                  ><u>{{ "view details" | translate }}</u></a
+                >
+              </div>
+
+                <button type="button" class="btn btn-warning" (click)="addToCart(prd)">
+                  <i class="bi bi-cart3"></i> {{ "Add to cart" | translate }}
+                </button>
+            </div>
+          </div>
+
+        </div>
+
+    </section>
+
+    <!-- offers cards -->
+
+      <h1 class="text-center">{{ "Today's Offers" | translate }}</h1>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mt-2"*ngFor="let prd of DiscountedProducts;let i=index;">
+            <div class="card shadow-lg" >
+              <div class="card-body" >
+                <div class="card-img-actions">
+                  <img
+                  class="img-fluid"
+                  [src] = "'http://eslam1998-001-site1.gtempurl.com/wwwroot/Images/'+prd.images2[0]"
+                />
+                </div>
+              </div>
+              <div class="card-body bg-light text-center">
+                <div class="mb-2">
+                  <h6 class="font-weight-semibold mb-2">
+
+                    <a *ngIf="(lang |async)=='en'" href="#" class="mb-2">{{prd.category}}</a>
+                    <a *ngIf="(lang |async)=='ar'" href="#" class="mb-2">{{prd.categoryAr}}</a>
+                  </h6>
+                  <a *ngIf="(lang |async)=='en'"  [routerLink]="['/productdetails',prd.no]" class="product-title">{{prd.name}} </a>
+                  <a *ngIf="(lang |async)=='ar'"  [routerLink]="['/productdetails',prd.no]" class="product-title">{{prd.nameAr}} </a>
+
+                </div>
+                <h3 class="mb-0 font-weight-semibold">{{prd.price-(+prd.discount)*(prd.price)}}</h3>
+                <h3 class="mb-0 font-weight-semibold"><del>{{prd.price}}</del></h3>
+                <div>
+                  <ngb-rating [max]="5" [rate]="+(prd.totalRating / prd.ratingCount).toFixed(2)" [readonly]="true" ></ngb-rating>
+                </div>
+                <p class="text-muted mb-3">
+                  <a  [routerLink]="['/productdetails',prd.no]" class="product-title">{{ "product details" | translate }}</a>
+                </p>
+                <button type="button" class="btn btn-warning">
+                  <i class="bi bi-cart3"></i> {{ "Add to cart" | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+<!-- <img [src] = "'http://localhost:5291/Content/Images/2ddf824f-8bd4-4b4b-ae27-c8875cd66afcknife.jpg'" > -->

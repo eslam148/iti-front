@@ -1,0 +1,81 @@
+<div class="row">
+<div class="col-2 d-none d-md-block">
+  <div class="row">
+    <div class="col">
+      <h5 class="fs-6 fw-semibold row">{{"Eligible for Free Shipping"|translate}}</h5>
+      <ul  class="fs-6 fw-semibold list-group c">
+        <li class="list-group-item border-0 row">{{"Category"|translate}}
+          <ul class="list-group" *ngFor="let item of subList">
+            <li class="list-group-item  border-0 row" style="font-size: 1vw;">
+              <a *ngIf="(lang |async)=='en'"  [routerLink]="['/category/sub',item.id]" class="col-lg-3 col-md-6 col-sm-12 mb-3 text-decoration-none row">
+                {{item.brandName}}
+              </a>
+               <a *ngIf="(lang |async)=='ar'"  [routerLink]="['/category/sub',item.id]" class="col-lg-3 col-md-6 col-sm-12 mb-3 text-decoration-none row">
+                {{item.brandNameAr}}
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="list-group-item border-0 row">{{"Filter By Price"|translate}}
+          <label class="form-lable row" for="min">{{"Minimmum Price"|translate}}</label>
+          <input class="form-control"  id="min" type="number" name="min" value="Initial Value" [(ngModel)]="min" />
+          <label class="form-lable row"  for="max">{{"Maximmum Price"|translate}}</label>
+          <input class="form-control"  type="number" id="max" name="max" value="Initial Value" [(ngModel)]="max" />
+
+          <button class="btn btn-warning mt-1" (click)="FilterByPrice()">{{"Filter"|translate}}</button>
+        </li>
+      </ul>
+  </div>
+  </div>
+
+</div>
+<div class="col-12 row col-sm-12 col-md-10">
+
+      <div class="col-md-4 col-12 mt-2" *ngFor="let prd of prodList;let i=index;">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <div class="card-img-actions">
+          <img
+            [src] = "'http://localhost:5291/Content/Images/'+prd.images2[0]"
+            class="card-img img-fluid"
+            width="96"
+            height="350"
+            alt=""
+
+          />
+        </div>
+      </div>
+      <div class="card-body bg-light text-center">
+        <div class="mb-2">
+          <h6 class="font-weight-semibold mb-2">
+            <a *ngIf="(lang |async)=='en'"  href="#" class="mb-2">{{prd.category}}</a>
+            <a *ngIf="(lang |async)=='ar'" href="#" class="mb-2">{{prd.categoryAr}}</a>
+
+          </h6>
+          <a *ngIf="(lang |async)=='en'"  href="#" class="text-muted">{{prd.name}}</a>
+          <a *ngIf="(lang |async)=='ar'"  href="#" class="text-muted">{{prd.nameAr}}</a>
+        </div>
+        <h3 class="mb-0 font-weight-semibold">{{prd.price}}</h3>
+        <div>
+          <ngb-rating [max]="5" [rate]="+(prd.totalRating / prd.ratingCount).toFixed(2)" [readonly]="true" ></ngb-rating>
+        </div>
+        <p class="text-muted mb-3">
+          <a [routerLink]="['/productdetails',prd.no]">{{ "product details" | translate }}</a>
+        </p>
+
+        <button type="button" class="btn btn-warning" (click)="addToCart(prd)">
+          <i class="bi bi-cart3"></i> {{ "Add to cart" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+<hr>
+<div class="row">
+  <img class="my-3" src="https://images-eu.ssl-images-amazon.com/images/G/42/Egypt-hq/2022/img/Elaraby-Main-Banner-En_Desktop.jpg" alt="">
+</div> -->
+<!-- <div class="row">
+<h1 class="fw-bold">Appliances | New Arrivals</h1>
+</div> -->
+<!-- </div> -->
+</div>

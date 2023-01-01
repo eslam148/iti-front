@@ -1,0 +1,22 @@
+<div class="  table-responsive p-3">
+ <table class="table table-hover">    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">{{"product Name"|translate}}</th>
+        <th scope="col">{{"Quantity"|translate}}</th>
+        <th scope="col">{{"Price"|translate}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items;let i = index">
+        <th scope="row" >{{i+1}}</th>
+        <td *ngIf="(lang |async)=='en'">{{item.name}}</td>
+        <td *ngIf="(lang |async)=='ar'">{{item.nameAr}}</td>
+
+        <td>{{item.quantity}}</td>
+        <td>{{item.price}}</td>
+      </tr>
+      <tr>
+    </tbody>
+  </table>
+</div>

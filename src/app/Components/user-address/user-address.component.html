@@ -1,0 +1,52 @@
+    <form class="row  mt-3" #AddressForm="ngForm" >
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">{{"Address"|translate}}</label>
+            <input #add1="ngModel" type="text" class="form-control" id="inputAddress" name="inputAddress"
+            required [(ngModel)]="newAddress.address_line1"
+            [class.is-valid]="add1.valid" [class.is-invalid]="add1.invalid">
+            <div class="alert alert-danger" [hidden]="add1.valid || add1.untouched">
+                <div *ngIf="add1.errors?.['required']">{{"This field is Required"|translate}}</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <label for="inputCountry" class="form-label">{{"Country"|translate}}</label>
+            <input #count="ngModel" type="text" class="form-control" id="inputCountry" name="inputCountry"
+            required [(ngModel)]="newAddress.country" [class.is-valid]="count.valid" [class.is-invalid]="count.invalid">
+            <div class="alert alert-danger" [hidden]="count.valid || count.untouched">
+                <div *ngIf="count.errors?.['required']">{{"This field is Required"|translate}}</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+          <label for="inputCity" class="form-label">{{"City"|translate}}</label>
+          <input #city="ngModel" type="text" class="form-control" id="inputCity" name="inputCity"
+          required [(ngModel)]="newAddress.city" [class.is-valid]="city.valid" [class.is-invalid]="city.invalid">
+          <div class="alert alert-danger" [hidden]="city.valid || city.untouched">
+            <div *ngIf="city.errors?.['required']">{{"This field is Required"|translate}}</div>
+        </div>
+        </div>
+        <div class="col-md-4">
+          <label for="inputZip" class="form-label">{{"postal code"|translate}}</label>
+          <input #code="ngModel" type="text" class="form-control" id="inputZip" name="inputZip"
+          required [(ngModel)]="newAddress.postal_Code" [class.is-valid]="code.valid" [class.is-invalid]="code.invalid">
+          <div class="alert alert-danger" [hidden]="code.valid || code.untouched">
+            <div *ngIf="code.errors?.['required']">{{"This field is Required"|translate}}</div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+            <label for="inputMobile" class="form-label">{{"Mobile"|translate}}</label>
+            <input #mob="ngModel" type="text" class="form-control" id="inputMobile" name="inputMobile"
+            required pattern="^(010|011|012|015)[0-9]{8}$" [(ngModel)]="newAddress.mobile" [class.is-valid]="mob.valid" [class.is-invalid]="mob.invalid">
+            <div class="alert alert-danger" [hidden]="mob.valid || mob.untouched">
+                <div *ngIf="mob.errors?.['required']">{{"This field is Required"|translate}}</div>
+                <div *ngIf="mob.errors?.['pattern']">{{"In valid mobile number,It must be 11 character"|translate}}</div>
+              </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-success" (click)="addAddress()" [disabled]="AddressForm.invalid">{{"Add"|translate}}</button>
+
+        </div>
+      </form>
+

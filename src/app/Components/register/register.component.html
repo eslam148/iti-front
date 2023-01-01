@@ -1,0 +1,86 @@
+<section class="gradient-custom">
+  <div class=" py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <form #Register ="ngForm" (ngSubmit)=" registerSeller(Register.value)">
+              <div class="mb-md-5 mt-md-4 pb-5">
+
+                <h2 class="fw-bold mb-2 text-uppercase">{{"Rigster"|translate}}</h2>
+                <p class="text-white-50 mb-5"> {{"enterInformations"|translate}}</p>
+                <!-- First name and lastName -->
+                <div class="row">
+                  <div class="form-outline form-white mb-4 col-6">
+
+                    <label class="form-label" for="FirstName">{{"FirsrName"|translate}}</label>
+
+                    <input ngModel name="firstName" type="text" id="FirstName" class="form-control form-control-lg" />
+                  </div>
+                  <div class="form-outline form-white mb-4 col-6">
+                    <label class="form-label" for="lastName">{{"lastName"|translate}}</label>
+
+                    <input ngModel name="lastName" type="text" id="lastName" class="form-control form-control-lg" />
+                  </div>
+                </div>
+                <!-- phone -->
+                <div class="form-outline form-white mb-4">
+                  <label class="form-label" for="phone">{{"phone"|translate}} </label>
+
+                  <input ngModel name="phoneNumber" type="tel" id="phone" class="form-control form-control-lg" />
+                </div>
+                <!-- Email -->
+                <div class="form-outline form-white mb-4">
+                  <label class="form-label" for="typeEmailX">{{"email"|translate}}</label>
+
+                  <input ngModel name="email" type="email" id="typeEmailX" class="form-control form-control-lg" />
+                </div>
+                <!-- userName -->
+                <div class="form-outline form-white mb-4">
+                  <label class="form-label" for="userName">{{"username"|translate}}</label>
+
+                  <input  ngModel name="userName"  type="text" id="userName" class="form-control form-control-lg" />
+                </div>
+                <!-- Address -->
+
+                <!-- password -->
+                <div class="form-outline form-white mb-4">
+                  <label class="form-label" for="password">{{"password"|translate}}</label>
+
+                  <input ngModel name="password" type="password" id="password" class="form-control form-control-lg" />
+                </div>
+                <!-- ConfirmPassword -->
+                <div class="form-outline form-white mb-4">
+                  <label class="form-label" for="ConfirmPassword">{{"ConfirmPassword"|translate}} </label>
+
+                  <input ngModel name="confirmPassword" type="password" id="ConfirmPassword" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-check">
+                  <input  ngModel name="Role"  class="form-check-input" type="radio" value="Seller" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                   Seller
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input  ngModel name="Role"class="form-check-input" type="radio" value="Buyer" id="flexRadioDefault2" checked>
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Buyer
+                  </label>
+                </div>
+
+                <button class="btn btn-outline-light btn-lg px-5" type="submit" href="#">{{"Rigster"|translate}}</button>
+
+              </div>
+
+              <div>
+                <p class="mb-0">{{"haveAccount"|translate}}<a routerLink="/login" class="text-white-50 fw-bold">{{"Login"|translate}}</a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

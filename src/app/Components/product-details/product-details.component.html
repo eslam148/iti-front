@@ -1,0 +1,59 @@
+<div class=" mt-5 mb-5">
+  <div class="card">
+    <div class="row g-0">
+      <div class="col-md-6 border-end">
+        <div class="d-flex flex-column justify-content-center">
+          <div class="main_image">
+            <img
+              [src] = "'http://eslam1998-001-site1.gtempurl.com/wwwroot/Images/'+product!.images2[0]"
+              id="main_product_image"
+              width="350"
+            />
+          </div>
+          <ng-container *ngIf="product!.images2.length>1">
+          <div class="thumbnail_images">
+            <ul id="thumbnail" >
+              <li *ngFor="let item of product?.images2">
+                <img
+                  [src] = "'http://eslam1998-001-site1.gtempurl.com/wwwroot/Images/'+item"
+                  width="70"
+                />
+              </li>
+            </ul>
+          </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 position-relative">
+          <div class="d-flex justify-content-between align-items-center">
+            <h3 *ngIf="(lang |async)=='en'">{{product.name}}</h3>
+            <h3 *ngIf="(lang |async)=='ar'">{{product.nameAr}}</h3>
+          </div>
+          <div class="mt-2 pr-3 content">
+            <p *ngIf="(lang |async)=='en'">{{product.description}}
+            <p *ngIf="(lang |async)=='ar'">{{product.descriptionAr}}
+            </p>
+          </div>
+          <h3>{{product.price}}</h3>
+          <div class="ratings d-flex flex-row align-items-center">
+            <div class="d-flex flex-row">
+              <i class="bx bxs-star"></i> <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i> <i class="bx bxs-star"></i>
+              <i class="bx bx-star"></i>
+            </div>
+            <!-- <span>441 reviews</span> -->
+          </div>
+          <div class="mt-5">
+            <ngb-rating [max]="5" (click)="GetRating(product.no)" [formControl]="ratingcontrol"></ngb-rating>
+
+          </div>
+          <div class="buttons d-flex flex-row mt-5 gap-3">
+            <!-- <button class="btn btn-outline-dark">{{"Buy Now"|translate}}</button> -->
+            <button class="btn btn-warning" (click)="addToCart(product)">{{"Add to Basket"| translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
