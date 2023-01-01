@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 // import {Store} from 'redux';
 import {AuthService} from './Services/auth.service';
@@ -7,7 +7,7 @@ import {AuthService} from './Services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Front_End_ITI_Final_project';
   constructor(
     public translate: TranslateService,
@@ -25,5 +25,12 @@ export class AppComponent {
       let role: string = item ? item : '';
       AuthService.logged.next({ loggedIn: true, Role: role });
     }
+  }
+  ngOnInit(): void {
+     const lang =  localStorage.getItem('lang');
+     if(lang){
+      this.translate.use(lang);
+     }
+
   }
 }

@@ -69,11 +69,12 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnChanges {
     if(lang=='ar'){
       this.store.dispatch(languageAR());
       this.translate.use('ar');
+      localStorage.setItem('lang','ar');
 
     }
     else if(lang=='en'){
+      localStorage.setItem('lang', 'en');
       this.store.dispatch(languageEN());
-
       this.translate.use('en');
 
     }
