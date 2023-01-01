@@ -158,5 +158,7 @@
   "pending": "pending",
   "Product NameAr": "Product Name in Arabic",
   "descriptionAr": "description in Arabic",
-  "descriptionTb": "description"
+  "descriptionTb": "description",
+  "You Must Select Discounts":"You Must Select Discounts",
+  "You Must Select subCategory":"You Must Select subCategory"
 }

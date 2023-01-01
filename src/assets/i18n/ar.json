@@ -158,6 +158,8 @@
   "pending": "في انتظار الشحن",
   "Product NameAr":"اسم المنتج بالعربي",
   "descriptionAr":"الوصف بالعربي",
-  "descriptionTb":"الوصف"
+  "descriptionTb":"الوصف",
+  "You Must Select Discounts":"يجب ادخال خصم",
+  "You Must Select subCategory":"يجب ادخال صنف فرعي"
 
 }

@@ -3,35 +3,35 @@
       <label for="prdName" class="form-label">{{"Product Name"|translate}}</label>
         <input #prdName="ngModel"  type="text" class="form-control" name="prdName" id="prdName" required [(ngModel)]="newPrd.name"
           [class.is-valid]="prdName.valid" [class.is-invalid]="prdName.invalid&& prdName?.touched">
-      <div class="alert alert-danger" [hidden]="prdName.valid || prdName.untouched">
+      <!-- <div class="alert alert-danger" [hidden]="prdName.valid || prdName.untouched">
           <div *ngIf="prdName.errors?.['required']">{{"Product Name Required"|translate}}</div>
-      </div>
+      </div> -->
     </div>
 
 <div class="mb-3">
-      <label for="prdName" class="form-label">{{"Product NameAr"|translate}}</label>
-        <input #prdNameAr="ngModel"  type="text" class="form-control" name="prdName" id="prdName" required [(ngModel)]="newPrd.nameAr"
+      <label for="prdNameAr" class="form-label">{{"Product NameAr"|translate}}</label>
+        <input #prdNameAr="ngModel"  type="text" class="form-control" name="prdNameAr" id="prdNameAr" required [(ngModel)]="newPrd.nameAr"
           [class.is-valid]="prdNameAr.valid" [class.is-invalid]="prdNameAr.invalid&& prdNameAr?.touched">
-      <div class="alert alert-danger" [hidden]="prdNameAr.valid || prdNameAr.untouched">
+      <!-- <div class="alert alert-danger" [hidden]="prdNameAr.valid || prdNameAr.untouched">
           <div *ngIf="prdNameAr.errors?.['required']">{{"Product Name Required"|translate}}</div>
-      </div>
+      </div> -->
   </div>
     <div class="mb-3">
       <label for="prdQuant" class="form-label">{{"Quantity"|translate}}</label>
       <input #prdQuantity="ngModel" type="number" class="form-control" name="prdQuant" id="prdQuant" required
       [(ngModel)]="newPrd.qauntity" [class.is-valid]="prdQuantity.valid" [class.is-invalid]="prdQuantity.invalid&& prdQuantity?.touched">
-      <div class="alert alert-danger" [hidden]="prdQuantity.valid || prdQuantity.untouched">
+      <!-- <div class="alert alert-danger" [hidden]="prdQuantity.valid || prdQuantity.untouched">
         <small *ngIf="prdQuantity.errors?.['required']">{{"Quantity is Required"|translate}}</small>
-      </div>
+      </div> -->
     </div>
 
     <div class="mb-3">
       <label for="prdPrc" class="form-label">{{"Price"|translate}}</label>
       <input #prdprice="ngModel" type="number" class="form-control" name="prdPrc" id="prdPrc" required
       [(ngModel)]="newPrd.price" [class.is-valid]="prdprice.valid" [class.is-invalid]="prdprice.invalid&& prdprice?.touched" >
-      <div class="alert alert-danger" [hidden]="prdprice.valid || prdprice.untouched">
+      <!-- <div class="alert alert-danger" [hidden]="prdprice.valid || prdprice.untouched">
         <small *ngIf="prdprice.errors?.['required']">{{"Price is Required"|translate}}</small>
-      </div>
+      </div> -->
     </div>
 
     <div class="mb-3">
@@ -39,18 +39,18 @@
           <textarea #prdDesc="ngModel" class="form-control" name="prddesc" id="prddesc"
            required [(ngModel)]="newPrd.description"
            [class.is-valid]="prdDesc.valid" [class.is-invalid]="prdDesc.invalid&& prdDesc?.touched"></textarea>
-           <div class="alert alert-danger" [hidden]="prdDesc.valid || prdDesc.untouched">
+           <!-- <div class="alert alert-danger" [hidden]="prdDesc.valid || prdDesc.untouched">
             <small *ngIf="prdDesc.errors?.['required']">{{"Description is Required"|translate}}</small>
-          </div>
+          </div> -->
       </div>
        <div class="mb-3">
-        <label for="prddesc" class="form-label">{{"descriptionAr"|translate}}</label>
-          <textarea #prdDescAr="ngModel" class="form-control" name="prddesc" id="prddesc"
+        <label for="prddescAr" class="form-label">{{"descriptionAr"|translate}}</label>
+          <textarea #prdDescAr="ngModel" class="form-control" name="prddescAr" id="prddescAr"
            required [(ngModel)]="newPrd.descriptionAr"
            [class.is-valid]="prdDescAr.valid" [class.is-invalid]="prdDescAr.invalid&& prdDescAr?.touched"></textarea>
-           <div class="alert alert-danger" [hidden]="prdDescAr.valid || prdDescAr.untouched">
+           <!-- <div class="alert alert-danger" [hidden]="prdDescAr.valid || prdDescAr.untouched">
             <small *ngIf="prdDescAr.errors?.['required']">{{"Description is Required"|translate}}</small>
-          </div>
+          </div> -->
       </div>
  <div class="mb-3">
           <label for="images" class="col-sm-3 col-form-label">{{"Images"|translate}}</label>
@@ -74,9 +74,9 @@
             </option>
         </ng-container>
       </select>
-      <div class="alert alert-danger" [hidden]="catSelect.valid || catSelect.untouched">
+      <!-- <div class="alert alert-danger" [hidden]="catSelect.valid || catSelect.untouched">
 
-    </div>
+    </div> -->
     </div>
   <div class="mb-3">
       <label for="prdSubcat" class="form-label">{{"Select Subcategory"|translate}}</label>
@@ -93,9 +93,9 @@
             </option>
         </ng-container>
       </select>
-      <div class="alert alert-danger" [hidden]="SubcatSelect.valid || SubcatSelect.untouched">
-        <small *ngIf="SubcatSelect.errors?.['required']">{{"You Must Select Category"|translate}}</small>
-    </div>
+      <!-- <div class="alert alert-danger" [hidden]="SubcatSelect.valid || SubcatSelect.untouched">
+        <small *ngIf="SubcatSelect.errors?.['required']">{{"You Must Select subCategory"|translate}}</small>
+    </div> -->
     </div>
 
     <div class="mb-3">
@@ -106,9 +106,9 @@
           {{Discount.name}}
         </option>
       </select>
-      <div class="alert alert-danger" [hidden]="DiscountsSelect.valid || DiscountsSelect.untouched">
-        <small *ngIf="DiscountsSelect.errors?.['required']">{{"You Must Select Category"|translate}}</small>
-    </div>
+      <!-- <div class="alert alert-danger" [hidden]="DiscountsSelect.valid || DiscountsSelect.untouched">
+        <small *ngIf="DiscountsSelect.errors?.['required']">{{"You Must Select Discounts"|translate}}</small>
+    </div> -->
     </div>
     <button type="submit" (click)="InsertNewProduct()" class="btn btn-primary" [disabled]="productForm.invalid|| !UploadImage" >{{"Add"|translate}}</button>
 
