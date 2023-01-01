@@ -44,7 +44,9 @@ export class AddProductComponent implements OnInit, OnChanges {
     this.categoryService.getCategories().subscribe((c) => {
       this.categoryList = c;
     });
-    this.productService.getDiscount().subscribe((d) => (this.Discounts = d));
+    this.productService.getDiscount().subscribe((d) => {
+      console.log(d)
+      this.Discounts = d});
   }
   GetSubcat(CatId: number) {
     this.SubCategoryService.getSubCategory(CatId).subscribe(

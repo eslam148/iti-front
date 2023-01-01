@@ -1,15 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FileToUpload, IProduct } from '../Model/IProduct';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
   private httpOptions = {};
 
-  constructor(private httpclient: HttpClient) {
+  constructor(private httpclient: HttpClient,private router:Router) {
     const item = window.localStorage.getItem('token');
     let token: String = item ? JSON.parse(item) : '';
     this.httpOptions = {
@@ -76,11 +77,23 @@ export class ProductService {
     );
   }
   addNewProduct(theFile: IProduct): Observable<IProduct> {
-    return this.httpclient.post<IProduct>(
-      'http://localhost:5291/MVC/AddProduct',
-      theFile,
-      this.httpOptions
-    );
+    return this.httpclient
+      .post<IProduct>(
+        'http://eslam1998-001-site1.gtempurl.com/MVC/AddProduct', //http://localhost:5291/MVC/AddProduct',
+        theFile,
+        this.httpOptions
+      ).pipe(
+        map((userResponse) => {
+           setTimeout(() => {}, 2000);
+          this.router.navigate(['/SellerProduct']);
+        }),
+        catchError((error) => {
+          setTimeout(()=>{},2000)
+                    this.router.navigate(['/SellerProduct']);
+
+          return of(error);
+        })
+      );
   }
 
   getSellerproducts(SellerId: string): Observable<IProduct[]> {
